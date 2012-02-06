@@ -29,37 +29,40 @@ sub deploy {
     my $out_filename   = $self->_config->{output}   || '';
     my $cover_filename = $self->_config->{cover}    || '';
     my $encoding       = $self->_config->{encoding} || 'utf-8';
-
+    my $imgcover       = $self->_config->{imgcover} || '';
+    my $htmcover       = $self->_config->{htmcover} || '';
 
     if ( !$out_filename ) {
         my $fh = File::Temp->new;
         $out_filename = $fh->filename;
     }
 
-    use Data::Dumper;
-    print Dumper($pods);
-
     # Create an object of a book
     use EBook::MOBI;
     my $book = EBook::MOBI->new();
 
     # give some meta information about this book
-    #$book->set_filename($out_filename);
+    $book->set_filename($out_filename);
     $book->set_title   ($title);
     $book->set_author  ($author);
     $book->set_encoding($encoding);
 
-    # lets create our own title page!
-    $book->add_mhtml_content(
-        " <h1>This is my Book</h1>
-         <p>Read my wisdome.</p>"
-    );
-    $book->add_pagebreak();
+    # create title page from an image, if set
+    if ($imgcover and -e $imgcover) {
+        $book->add_pod_content("\n=image $imgcover\n\n");
+        $book->add_pagebreak();
+    }
+    # create title page from mhtml, if set
+    if ($htmcover) {
+        $book->add_mhtml_content($htmcover);
+        $book->add_pagebreak();
+    }
 
     # insert a table of contents after the titlepage
     $book->add_toc_once();
     $book->add_pagebreak();
 
+    # insert content of the book
     for my $data (@{$pods}) {
 
         my $chap = $data->{title};
@@ -68,7 +71,6 @@ sub deploy {
         $book->add_pod_content("\n=head1 $chap\n\n");
         # add the books text, which is e.g. in the POD format
         $book->add_pod_content($pod, 'pagemode', 'head0_mode');
-
     }
 
     # prepare the book (e.g. calculate the references for the TOC)
