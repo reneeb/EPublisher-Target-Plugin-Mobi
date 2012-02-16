@@ -5,14 +5,10 @@ package EPublisher::Target::Plugin::Mobi;
 use strict;
 use warnings;
 
-use Carp;
-use File::Basename;
 use File::Temp;
-use IO::String;
-use Pod::Text;
-
-use EPublisher;
+use EBook::MOBI;
 use EPublisher::Target::Base;
+
 our @ISA = qw(EPublisher::Target::Base);
 
 our $VERSION = 0.01;
@@ -38,7 +34,6 @@ sub deploy {
     }
 
     # Create an object of a book
-    use EBook::MOBI;
     my $book = EBook::MOBI->new();
 
     # give some meta information about this book
