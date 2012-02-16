@@ -89,17 +89,13 @@ __END__
 
 =head1 NAME
 
-EPublisher::Target::Plugin::Text - Use Ascii text as a target for EPublisher
-
-=head1 VERSION
-
-version 0.4
+EPublisher::Target::Plugin::Mobi - Use the Mobipocket format as a target for EPublisher
 
 =head1 SYNOPSIS
 
   use EPublisher::Target;
-  my $Text = EPublisher::Target->new( { type => 'Text' } );
-  $Text->deploy;
+  my $mobi = EPublisher::Target->new( { type => 'Mobi' } );
+  $mobi->deploy;
 
 =head1 METHODS
 
@@ -107,22 +103,22 @@ version 0.4
 
 creates the output.
 
-  $Text->deploy;
+  $mobi->deploy;
 
 =head2 testresult
 
 =head1 YAML SPEC
 
-  TextTest:
+  MobiTest:
     source:
       #...
     target:
-      type: Text
-      output: /path/to/test.txt
+      type: Mobi
+      output: /path/to/test.mobi
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2012 Renee Baecker, all rights reserved.
+Copyright 2012 Renee Baecker and Boris Däppen, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms of Artistic License 2.0.
@@ -130,18 +126,7 @@ under the same terms of Artistic License 2.0.
 =head1 AUTHOR
 
 Renee Baecker (E<lt>module@renee-baecker.deE<gt>)
-
-=head1 AUTHOR
-
-Renee Baecker <module@renee-baecker.de>
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is Copyright (c) 2012 by Renee Baecker.
-
-This is free software, licensed under:
-
-  The Artistic License 2.0 (GPL Compatible)
+Boris Däppen (E<lt>boris_daeppen@bluewin.chE<gt>)
 
 =cut
 
