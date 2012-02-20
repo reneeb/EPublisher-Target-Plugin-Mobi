@@ -22,7 +22,6 @@ sub deploy {
     my $title          = $self->_config->{title}    || 'Pod Document';
     my $language       = $self->_config->{lang}     || 'en';
     my $out_filename   = $self->_config->{output}   || '';
-    my $cover_filename = $self->_config->{cover}    || '';
     my $encoding       = $self->_config->{encoding} || 'utf-8';
     my $imgcover       = $self->_config->{imgcover} || '';
     my $htmcover       = $self->_config->{htmcover} || '';
@@ -36,6 +35,7 @@ sub deploy {
     my $book = EBook::MOBI->new();
 
     # give some meta information about this book
+    print "------$title-----$author------\n\n\n";
     $book->set_filename($out_filename);
     $book->set_title   ($title);
     $book->set_author  ($author);
@@ -71,7 +71,8 @@ sub deploy {
     $book->make();
 
     # let me see how this mobi-html looks like
-    $book->print_mhtml();
+    #$book->print_mhtml();
+    # TODO: should only print in DEBUG-MODE
 
     # ok, give me that mobi-book as a file!
     $book->save();
