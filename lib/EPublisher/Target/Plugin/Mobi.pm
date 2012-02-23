@@ -23,7 +23,7 @@ sub deploy {
     my $language       = $self->_config->{lang}     || 'en';
     my $out_filename   = $self->_config->{output}   || '';
     my $encoding       = $self->_config->{encoding} || 'utf-8';
-    my $imgcover       = $self->_config->{imgcover} || '';
+    my $imgcover       = $self->_config->{cover}    || '';
     my $htmcover       = $self->_config->{htmcover} || '';
 
     if ( !$out_filename ) {
