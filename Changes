@@ -1,5 +1,10 @@
 Changes for EPublisher::Target::Plugin::Mobi
 
+* 0.2   2012-02-23
+
+- Renamed imgcover option to cover due to standard of other plugins
+- Added some small info to the documentation
+
 * 0.1   2012-02-17
 
 - Added README file
