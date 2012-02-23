@@ -35,7 +35,6 @@ sub deploy {
     my $book = EBook::MOBI->new();
 
     # give some meta information about this book
-    print "------$title-----$author------\n\n\n";
     $book->set_filename($out_filename);
     $book->set_title   ($title);
     $book->set_author  ($author);
