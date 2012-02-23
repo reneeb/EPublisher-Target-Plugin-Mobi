@@ -84,7 +84,8 @@ sub deploy {
 
 
 __END__
-=pod
+
+=encoding utf-8
 
 =head1 NAME
 
@@ -113,19 +114,25 @@ creates the output.
       #...
     target:
       type: Mobi
+      author: Boris Daeppen
+      title: My eBook
+      encoding: utf-8
+      cover: /path/to/image/for/cover.jpg
+      htmcover: <h1>My own Titlepage</h1><p>Cool, isn't it?<p>
       output: /path/to/test.mobi
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2012 Renee Baecker and Boris Däppen, all rights reserved.
+Boris Däppen, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms of Artistic License 2.0.
 
 =head1 AUTHOR
 
-Renee Baecker (E<lt>module@renee-baecker.deE<gt>)
 Boris Däppen (E<lt>boris_daeppen@bluewin.chE<gt>)
+
+Some code is taken from Renee Baeckers module L<EPublisher::Target::Plugin::EPub>
 
 =cut
 
