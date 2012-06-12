@@ -11,7 +11,7 @@ use EPublisher::Target::Base;
 
 our @ISA = qw(EPublisher::Target::Base);
 
-our $VERSION = 0.2;
+our $VERSION = 0.3;
 
 sub deploy {
     my ($self) = @_;
@@ -22,7 +22,7 @@ sub deploy {
     my $title          = $self->_config->{title}    || 'Pod Document';
     my $language       = $self->_config->{lang}     || 'en';
     my $out_filename   = $self->_config->{output}   || '';
-    my $encoding       = $self->_config->{encoding} || 'utf-8';
+    my $encoding       = $self->_config->{encoding} || ':encoding(UTF-8)';
     my $imgcover       = $self->_config->{cover}    || '';
     my $htmcover       = $self->_config->{htmcover} || '';
 

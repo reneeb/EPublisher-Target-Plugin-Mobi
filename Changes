@@ -1,5 +1,9 @@
 Changes for EPublisher::Target::Plugin::Mobi
 
+* 0.3   2012-06-12
+
+- Set correct encoding, due to Change of EBook::MOBI
+
 * 0.2   2012-02-23
 
 - Renamed imgcover option to cover due to standard of other plugins
