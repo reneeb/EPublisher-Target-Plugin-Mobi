@@ -1,5 +1,9 @@
 Changes for EPublisher::Target::Plugin::Mobi
 
+* 0.4   2012-08-27
+
+- Change method calls because of API change in EBook::MOBI v0.5
+
 * 0.3   2012-06-12
 
 - Set correct encoding, due to Change of EBook::MOBI

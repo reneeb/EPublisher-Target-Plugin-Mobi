@@ -11,7 +11,7 @@ use EPublisher::Target::Base;
 
 our @ISA = qw(EPublisher::Target::Base);
 
-our $VERSION = 0.3;
+our $VERSION = 0.4;
 
 sub deploy {
     my ($self) = @_;
@@ -42,7 +42,9 @@ sub deploy {
 
     # create title page from an image, if set
     if ($imgcover and -e $imgcover) {
-        $book->add_pod_content("\n=image $imgcover\n\n");
+        $book->add_content( data   => "\n=image $imgcover\n\n",
+                            driver => 'EBook::MOBI::Driver::POD',
+                          );
         $book->add_pagebreak();
     }
     # create title page from mhtml, if set
@@ -61,9 +63,17 @@ sub deploy {
         my $chap = $data->{title};
         my $pod  = $data->{pod};
 
-        $book->add_pod_content("\n=head1 $chap\n\n");
+        $book->add_content( data => "\n=head1 $chap\n\n",
+                            driver => 'EBook::MOBI::Driver::POD',
+                          );
         # add the books text, which is e.g. in the POD format
-        $book->add_pod_content($pod, 'pagemode', 'head0_mode');
+        $book->add_content( data => $pod,
+                            driver => 'EBook::MOBI::Driver::POD',
+                            driver_options => {
+                                pagemode => 1,
+                                head0_mode => 1,
+                            }
+                          );
     }
 
     # prepare the book (e.g. calculate the references for the TOC)
