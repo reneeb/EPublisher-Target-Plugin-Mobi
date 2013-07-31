@@ -1,5 +1,9 @@
 Changes for EPublisher::Target::Plugin::Mobi
 
+0.6   2013-07-31
+
+    - Move POD and version tests to xt
+
 0.5   2013-07-31
 
     - Make Changefile valid
